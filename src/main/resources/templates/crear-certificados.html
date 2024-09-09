@@ -1,0 +1,151 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tata Consulting - Certificaciones</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png"/>
+  <link rel="stylesheet" href="/css/styles.min.css"/>
+</head>
+
+<body>
+<!-- Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+  <!-- Sidebar Start -->
+  <aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+        <a href="#" class="logo-text d-flex align-items-center">
+          <img src="/images/logos/login.jpg"  alt="Logo" class="me-2" style="height: 40px;">
+          <span class="fs-3 fw-bold text-dark">TataConsulting</span>
+        </a>
+        <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+          <i class="ti ti-x fs-8"></i>
+        </div>
+      </div>
+
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <ul id="sidebarnav">
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Home</span>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" aria-expanded="false" th:href="@{/index}">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+              <span class="hide-menu">Principal</span>
+            </a>
+          </li>
+
+          <li class="nav-small-cap">
+            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <span class="hide-menu">Componentes</span>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="" aria-expanded="false" th:href="@{/certificados/add}">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+              <span class="hide-menu">Nuevo Certificado</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="" aria-expanded="false" th:href="@{/register}">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+              <span class="hide-menu">Crer nuevo Perfil</span>
+            </a>
+          </li>
+        </ul>
+
+      </nav>
+      <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+  </aside>
+  <!-- Sidebar End -->
+
+  <!-- Main wrapper -->
+  <div class="body-wrapper">
+    <!-- Header Start -->
+    <header class="app-header">
+      <div class="container mt-5">
+        <h2>Crear Certificado</h2>
+        <form th:action="@{/saveCertificado}" th:object="${certificados}" method="post">
+          <div class="form-group">
+            <input type="hidden" th:field="*{idCertificado}">
+            <label for="dni">DNI</label>
+            <input type="text" id="dni" th:field="*{dni}" class="form-control" placeholder="Ingresa el DNI"
+                   required minlength="8" maxlength="8" pattern="\d{8}" title="El DNI debe tener 8 dígitos numéricos">
+            <div class="invalid-feedback">El DNI debe tener exactamente 8 dígitos numéricos.</div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="participante">Participante</label>
+            <input type="text" id="participante" th:field="*{participante}" class="form-control"
+                   placeholder="Ingresa el nombre del participante" required minlength="2" maxlength="100">
+            <div class="invalid-feedback">El nombre del participante es obligatorio y debe tener entre 2 y 100 caracteres.</div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="capacitacion">Capacitación</label>
+            <input type="text" id="capacitacion" th:field="*{capacitacion}" class="form-control"
+                   placeholder="Ingresa la capacitación" required minlength="2" maxlength="100">
+            <div class="invalid-feedback">La capacitación es obligatoria y debe tener entre 2 y 100 caracteres.</div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="inicio">Inicio</label>
+            <input type="date" id="inicio" th:field="*{fechaInicio}" class="form-control" required>
+            <div class="invalid-feedback">La fecha es obligatoria.</div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="fin">Fin</label>
+            <input type="date" id="fin" th:field="*{fechaFin}" class="form-control" required>
+            <div class="invalid-feedback">La fecha es obligatoria.</div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="codigoCertificado">Código de Certificado</label>
+            <input type="text" id="codigoCertificado" th:field="*{codigoCertificado}" class="form-control"
+                   placeholder="Ingresa el código de certificado">
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="fechaEmision">Fecha de Emisión</label>
+            <input type="date" id="fechaEmision" th:field="*{fechaEmision}" class="form-control" required>
+            <div class="invalid-feedback">La fecha de emisión es obligatoria.</div>
+          </div>
+
+          <br>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+          <a th:href="@{/index}" class="btn btn-secondary">Cancelar</a>
+        </form>
+      </div>
+
+
+
+    </header>
+    <!-- Header End -->
+
+    <!-- Main Content -->
+
+    <!-- Main Content End -->
+  </div>
+  <!-- Main wrapper End -->
+</div>
+<!-- Body Wrapper End -->
+</body>
+
+</html>

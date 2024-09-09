@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Certificados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Lista de Certificados</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID Certificado</th>
+            <th>DNI</th>
+            <th>Participante</th>
+            <th>Capacitación</th>
+            <th>Incio</th>
+            <th>Fin</th>
+            <th>Código Certificado</th>
+            <th>Fecha de Emisión</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="certificado : ${certificados}">
+            <td th:text="${certificado.idCertificado}"></td>
+            <td th:text="${certificado.dni}"></td>
+            <td th:text="${certificado.participante}"></td>
+            <td th:text="${certificado.capacitacion}"></td>
+            <td th:text="${certificado.fechaInicio}"></td>
+            <td th:text="${certificado.fechaFin}"></td>
+            <td th:text="${certificado.codigoCertificado}"></td>
+            <td th:text="${certificado.fechaEmision}"></td>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{/eliminar/{id}(id=${certificado.idCertificado})}"
+                   onclick="return confirm('¿Estás seguro de que quieres eliminar este certificado?');">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
